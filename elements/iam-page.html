@@ -1,0 +1,108 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html">
+<dom-module id="iam-page">
+	<style is="custom-style">
+		#page_{
+		    height: 100vh !important;
+		    color: orange;
+	  	}
+	  	#the_{
+	  		text-align: center;
+	  	}
+	  	.small-text{
+		    font-size: 30px;
+		    font-weight: normal;
+	  	}
+		.overlay{
+		      width: 100%;
+		      height: 100%;
+		      background: rgba(0, 0, 0, .3);
+		      @apply(--layout-vertical);
+		      @apply(--layout-center-center);
+  		}
+  		.page{
+		    font-family: 'Roboto', 'Noto', sans-serif;
+		    padding: 0;
+		    font-size: 70px;
+		    font-weight: 700;
+			text-transform: uppercase;
+		    color: white;
+	  	}
+	</style>
+
+	<template>
+		
+		<section id="page_">
+
+            <div class="overlay page">
+            	<div id="contentMid">
+	                <div>HI! I am <span style="color: orange;">GORAN</span></div>
+
+	                <div class="small-text" id="the_" >web developer</div>
+				</div>
+            </div>
+
+      	</section>
+
+	</template>
+
+</dom-module>
+
+<script>
+
+    Polymer({
+      is: 'iam-page',
+      behaviors: [Polymer.NeonAnimationRunnerBehavior],
+      properties: {
+	      animationConfig: {
+	      	value: function(){
+	      		
+	      		return {
+	      			'in': {
+	      				name: 'fade-in-animation',
+	      				node: this.$.the_
+	      			},
+
+	              'contentSlide': { 
+	                name:'slide-from-bottom-animation',
+	                node: this.$.contentMid
+	              }
+	      		}
+	      	}
+	      }
+  		}	
+    });
+
+
+  document.addEventListener('WebComponentsReady', function () {
+
+    var the = document.getElementById('the_'),
+    	iam = ['web developer', 'javascript enthuziast', 'plays footbal', 'exploring ES6-HTML5',
+             'survived halfmarathon :)', 'writes clean code', 'focused','knows about algorithms', 'web developer', 'an optimist', 'curious', 	'specialized','always exploring', 'father'];
+
+ 	var i = 0,
+		page = document.querySelector('iam-page');
+
+ 	page.playAnimation('contentSlide');
+
+ 	setInterval(function(){
+ 	
+ 		i++;
+	
+		if(!iam[i])
+			i=0;
+
+		the.innerText = iam[i];
+		the.textContent  = iam[i];
+
+		page.playAnimation('in')
+
+
+
+ 	}, 3000)
+
+  });
+
+</script>
