@@ -1,0 +1,210 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-top-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-up-animation.html">
+
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="list-el.html">
+<link rel="import" href="social-el.html">
+
+
+
+<dom-module id="skills-page">
+<link rel="import" type="css" href="common.css">
+<style is="custom-style">
+    .page{
+        height: 100%;
+        background: url(../images/bck/skills1.jpg) center/cover no-repeat;
+    }
+    paper-header-panel{
+        background-color: #4a4a4a;
+    }
+
+    .overlay{
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0, .7);
+
+
+    }
+
+	 a{
+		 color: gray;
+	 }
+    .lists{
+         @apply(--layout-horizontal);
+         @apply(--layout-wrap);
+
+    }
+
+    h3, .scls{
+        color: white;
+    }
+    .scls{
+			max-width: 870px;
+    }
+
+
+    .flex{
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+
+    }
+    list-el{
+        width: 150px;
+    }
+
+</style>
+
+<template>
+<paper-header-panel>
+	<paper-toolbar>
+		<paper-icon-button icon="arrow-back" on-tap="goHome"></paper-icon-button>
+		<span class="title"> &nbsp; </span>
+		<social-el></social-el>
+	</paper-toolbar>
+		 <section class="page">
+			<div class="overlay">
+				<div class="flex">
+
+					<div>
+						<h3>I WORKED WITH</h3>
+						<div class="lists">
+							<list-el title="Server" items="{{server}}"></list-el>
+							<list-el title="Versioning" items="{{subversion}}"></list-el>
+							<list-el title="OS" items="{{os}}"></list-el>
+							<list-el title="Client" items="{{client}}"></list-el>
+							<list-el title="Management" items="{{management}}"></list-el>
+							<list-el title="Tools" items="{{tools}}"></list-el>
+						</div>
+
+					</div>
+
+					<div class="scls">
+                        <p>
+                            This is some brief overview of the tools I worked with, at least those I remember.
+                            In general, it takes me a short time to learn something I didn't worked with before.  
+                         </p>
+                        <p>It's also fun and motivating to use something new. I guess this is common for 
+                        most of the developers.</p>
+
+                        <p>Choosing a tool, library or a framework is a business decision too, so I always try to measure my goals and pick the right technology stack. WIll not use ReactJS or AngularJS
+                        just because there are popular.
+                        </p>
+
+						 
+					</div>
+
+				</div>
+        </div>
+
+
+</section>
+ </paper-header-panel>
+
+
+</template>
+
+</dom-module>
+
+<script>
+
+Polymer({
+  is: 'skills-page',
+	behaviors: [Polymer.NeonAnimatableBehavior],
+    ready: function() {
+
+        this.server = [
+            {img: 'php.png', text: 'PHP'},
+            {img: 'phalcon.png', text:  'Phalcon PHP'},
+            {img: 'symphony.png', text:  'Symphony'},
+            {img: 'smarty.gif', text:  'Smarty'},
+            {img: 'nodejs.png', text: 'NodeJS'},
+            {img: 'shell.png', text:  'Shell'},
+            {img: 'mysql.png', text:  'MySQL'},
+            {img: 'mongo.png', text:  'MongoDB'},
+            {img: 'redis.png', text:  'Redis'},
+            {img: 'apache.gif', text:  'Apache'},
+            {img: 'imagemagick.png', text:  'ImageMagic'}
+        ];
+
+        this.subversion = [
+            {img: 'git.png', text: 'Git'},
+            {img: '../contact/git.png', text:  'GitHub'},
+            {img: 'bitbucket.png', text:  'Bitbucket'},
+            {img: 'svn.png', text:  'SVN'}
+        ];
+
+        this.os = [
+            {img: 'windows.png', text: 'Windows'},
+            {img: 'mac.png', text:  'Mac OS'},
+            {img: 'centos.png', text:  'Centos'},
+            {img: 'ubuntu.png', text:  'Ubuntu'},
+            {img: 'android.png', text:  'Android'}
+        ];
+
+
+        this.client = [
+            {img: 'es6.png', text: 'Javascript'},
+            {img: 'html.png', text:  'HTML5'},
+            {img: 'css.png', text:  'CSS3'},
+            {img: 'sass.png', text:  'SASS'},
+            {img: 'extjs.png', text:  'ExtJS'},
+            {img: 'jquery.gif', text:  'jQuery'},
+            {img: 'react.png', text:  'ReactJS'},
+            {img: 'redux.png', text:  'Redux'},
+            {img: 'angular.png', text:  'AngularJS'},
+            {img: 'polymer.png', text:  'Polymer'},
+        ];
+
+        this.management = [
+            {img: 'scrum.png', text: 'Scrum'},
+            {img: 'jira.png', text: 'Jira'},
+            {img: 'confluence.png', text:  'Confluence'},
+            {img: 'redmine.png', text:  'Redmine'},
+            {img: 'trello.png', text:  'Trello'}
+        ];
+
+        this.tools = [
+            {img: 'docker.png', text: 'Docker'},
+            {img: 'npm.png', text: 'NPM'},
+            {img: 'bower.png', text:  'Bower'},
+            {img: 'composer.png', text:  'Composer'},
+            {img: 'sencha.png', text:  'Sencha CMD'},
+        ];
+
+        },
+        properties: {
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                name: 'slide-from-top-animation',
+                node: this
+              },
+              'exit': {
+                name: 'slide-up-animation',
+                node: this
+              }
+            };
+          }
+        }
+      },
+		goHome: function(){
+			document.querySelector('neon-animated-pages').selected='home';
+		}
+    });
+
+</script>

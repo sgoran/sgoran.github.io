@@ -1,0 +1,68 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="bower_components/app-route/app-location.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+
+<link rel="import" href="animated-grid.html">
+<link rel="import" href="elements/about-page.html">
+<link rel="import" href="elements/work-page.html">
+<link rel="import" href="elements/contact-page.html">
+<link rel="import" href="elements/skills-page.html">
+<link rel="import" href="elements/experience-page.html">
+
+<dom-module id="full-page">
+  <template>
+  <app-location route="{{route}}" use-hash-as-path></app-location>
+
+    <style>
+      :host {
+        background: black;
+        @apply(--layout-vertical);
+      }
+
+
+      neon-animated-pages, animated-grid {
+        height: 100%;
+        @apply(--layout-flex);
+      }
+    </style>
+    
+
+	 <neon-animated-pages id="pages" selected="{{route.path}}" attr-for-selected='key'>
+
+		<animated-grid key="home"></animated-grid>
+		<about-page key="about"></about-page>
+		<work-page key="work"></work-page>
+		<contact-page key="contact"></contact-page>
+		<skills-page key="skills"></skills-page>
+		<experience-page key="experience"></experience-page>
+
+
+	 </neon-animated-pages>
+
+  </template>
+</dom-module>
+
+<script>
+
+Polymer({
+
+  is: 'full-page',
+  observers: [
+      '_onRoutePathChanged(route.path)'
+    ],
+    _onRoutePathChanged: function(path) {
+      // If we do not have an initial URL, we redirect to /search
+      if (!path) {
+        this.set('route.path', 'home');
+      }
+    },
+  ready: function(){
+    
+  }
+
+});
+
+
+</script>

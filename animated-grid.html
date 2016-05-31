@@ -1,0 +1,282 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="bower_components/neon-animation/neon-animation-behavior.html">
+<link rel="import" href="bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="bower_components/neon-animation/animations/slide-down-animation.html">
+
+<dom-module id="animated-grid">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+        background: #000;
+      }
+      h1{
+        padding: 15px;
+      }
+      .tile {
+        display: inline-block;
+        float: left;
+        vertical-align: top;
+        width: calc(100% / 6);
+        height: calc(100% / 3);
+        cursor: pointer;
+       }
+       .tile:hover .overlay{
+        background: none;
+
+       }
+       .tile:hover h1{
+        background: rgba(0,0,0, .5);
+
+       }
+
+      .tile.about{
+        width: calc(100% / 3);
+        height: calc(100% / 3 * 2);
+        background: url(images/bck/about-small.jpeg) center/cover no-repeat;
+      }
+
+		 .tile.work{ /* work */
+        width: calc(100% / 3);
+        background: url(images/bck/sportswatch-small.png) center/cover no-repeat;
+      }
+
+      .tile.contact{ /*contat*/
+        width: calc(100% / 3);
+        background: url(images/bck/phone-small.jpeg) center/cover no-repeat;
+      }
+
+      .tile.skills{
+        width: calc(100% / 3);
+        height: calc(100% / 3 * 2);
+        background: url(images/bck/skills-small.jpeg) center/cover no-repeat;
+      }
+
+      .tile.experience{
+        width: calc(100% / 3);
+        height: calc(100% / 3);
+        background: url(images/bck/bf.png) center/cover no-repeat;
+      }
+
+      .tile.blog{
+        position: absolute;
+        top: calc(100% / 3 * 2);
+        left: 0;
+        width: calc(100% / 3);
+        height: calc(100% / 3);
+        background: url(images/bck/blog-small.jpeg) center/cover no-repeat;
+      }
+
+      .overlay{
+        background: rgba(247, 181, 16, 0.6);
+        width: 100%;
+        height: 100%;
+        @apply(--layout-center-center);
+         @apply(--layout-vertical);
+         color: white;
+
+      }
+
+      .about .overlay{
+        background: rgba(29, 28, 27, 0.53);
+      }
+      .contact .overlay{
+        background: rgba(7, 81, 82, .53);
+      }
+      .blog .overlay{
+        background: rgba(29, 28, 27, 0.53);
+      }
+      .skills .overlay{
+        background: rgba(6, 31, 31, 0.53);
+      }
+      .work .overlay{
+        background: rgba(29, 28, 27, 0.53);
+      }
+      .git .overlay{
+        background: rgba(121, 108, 108, 0.53);
+      }
+      .ln .overlay{
+        background: rgba(27, 133, 188, .53);
+      }
+      .experience .overlay{
+        background: rgba(16, 230, 233, .53);
+      }
+      .overlay2{
+        background: rgba(247, 181, 16, 0.1);
+
+      }
+      .img{
+        width: 100%;
+        height: 100%;
+
+        }
+        .r{
+        animation:spin 8s linear infinite;
+        -webkit-animation:spin 8s linear infinite;
+        -moz-animation:spin 8s linear infinite;
+        }
+    @-moz-keyframes spin {
+        10% { -moz-transform: rotate(0deg); }
+        25% { -moz-transform: rotate(0deg); }
+        50% { -moz-transform: rotate(360deg); }
+        75% { -moz-transform: rotate(360deg); }
+        100% { -moz-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+
+        10% { -webkit-transform: rotate(0deg); }
+        25% { -webkit-transform: rotate(0deg); }
+        50% { -webkit-transform: rotate(360deg); }
+        75% { -webkit-transform: rotate(360deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin {
+
+        10% { -webkit-transform: rotate(0deg); }
+        25% { -webkit-transform: rotate(0deg); }
+        50% { -webkit-transform: rotate(360deg); }
+        75% { -webkit-transform: rotate(360deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin  {
+        10% { transform: rotate(0deg); }
+        25% { transform: rotate(0deg); }
+        50% { transform: rotate(360deg); }
+        75% { transform: rotate(360deg); }
+        100% { transform: rotate(360deg); }
+
+    }
+    </style>
+
+
+      <div class="tile about"  on-click="_onAboutClick">
+          <div class="overlay">
+            <h1>about</h1>
+          </div>
+      </div>
+
+      <div class="tile work" on-click="_onWorkClick">
+          <div class="overlay">
+            <h1>work</h1>
+          </div>
+      </div>
+
+
+      <div class="tile contact" on-click="_onContactClick">
+          <div class="overlay">
+            <h1>contact</h1>
+          </div>
+      </div>
+
+      <div class="tile skills" on-click="_onSkillsClick">
+          <div class="overlay">
+            <h1>skills</h1>
+          </div>
+      </div>
+      <div class="tile git" on-click="_onGitClick">
+          <div class="overlay">
+            <h1><img src="images/contact/git.png" class="img r"/></h1>
+          </div>
+      </div>
+      <div class="tile ln" on-click="_onLnClick">
+          <div class="overlay">
+            <h1><img src="images/contact/ln.png" class="img s"/></h1>
+          </div>
+      </div>
+      <div class="tile experience" on-click="_onExpClick">
+          <div class="overlay">
+            <h1>experience</h1>
+          </div>
+      </div> <div class="tile blog" on-click="_onBlogClick">
+          <div class="overlay">
+            <h1>blog</h1>
+          </div>
+      </div>
+
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'animated-grid',
+
+    behaviors: [
+      Polymer.NeonAnimatableBehavior,
+		Polymer.NeonAnimationRunnerBehavior
+    ],
+
+    properties: {
+      animationConfig: {
+        value: function() {
+          return {
+            'entry': [{
+    					name: 'cascaded-animation',
+    					animation: 'transform-animation',
+    					transformFrom: 'translateY(100%)',
+    					transformTo: 'none',
+    					timing: {
+    					  delay: 50
+    					}
+            }],
+    				exit: {
+    					name: 'slide-down-animation',
+    					node: this
+    				}
+          };
+        }
+      }
+
+    },
+
+    attached: function() { console.log(1111)
+      this.async(function() {
+        var nodeList = Polymer.dom(this.root).querySelectorAll('.tile');
+        this.animationConfig['entry'][0].nodes = Array.prototype.slice.call(nodeList);
+      });
+    },
+
+	 _onAboutClick: function(){
+
+		 document.querySelector('neon-animated-pages').selected='about';
+	 },
+	 _onWorkClick: function(){
+		 document.querySelector('neon-animated-pages').selected='work';
+	 },
+	 _onContactClick: function(){
+		 document.querySelector('neon-animated-pages').selected='contact';
+	 },
+	 _onSkillsClick: function(){
+		 document.querySelector('neon-animated-pages').selected='skills';
+	 },
+	 _onExpClick: function(){
+		 document.querySelector('neon-animated-pages').selected='experience';
+	 },
+	 _onGitClick: function(){
+		this.goTo('https://github.com/sgoran');
+	 },
+	 _onLnClick: function(){
+		 this.goTo('https://www.linkedin.com/in/goransmiljanic');
+	 },
+	 _onBlogClick: function(){
+		 this.goTo('http://lessgeneric.com/author/sadmin');
+	 },
+	 goTo: function(url){
+		var win = window.open(url, '_blank');
+		win.focus();
+	 }
+
+  });
+
+
+	document.addEventListener('WebComponentsReady', function() {
+		document.querySelector('animated-grid').playAnimation('entry')
+	});
+</script>

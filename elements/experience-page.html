@@ -1,0 +1,171 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-top-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-up-animation.html">
+
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="social-el.html">
+
+<dom-module id="experience-page">
+	<style is="custom-style">
+        #page{
+            min-height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .flex{
+            @apply(--layout-vertical);
+            width: 60%;
+            margin: 0 auto;
+        }
+        paper-card .card-content{
+            font-size: 0.8rem;
+            text-align: justify;
+            min-height: 100px;
+        }
+
+        paper-toolbar{
+            background: black;
+            color: #e2e2e2;
+        }
+
+
+paper-card.rate {
+    @apply(--layout-horizontal);
+    margin-top: 1rem;
+
+}
+  .rate-image {
+    width: 170px;
+    height: 170px;
+
+    background-size: cover/center;
+  }
+
+  .rate-image1 {
+	  background: url(../images/exp/propel.png) center/cover no-repeat;
+  }
+
+  .rate-image2 {
+	  background: url(../images/exp/xhibit.png) center/cover no-repeat;
+  }
+
+  .rate-image3 {
+	  background: url(../images/exp/infomedia.png) center/cover no-repeat;
+  }
+
+  .rate-image4 {
+	  background: url(../images/exp/infoars.png) center/cover no-repeat;
+  }
+
+
+  .rate-content {
+    @apply(--layout-flex);
+    float: left;
+  }
+  .rate-header { @apply(--paper-font-headline); }
+  .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
+
+   </style>
+
+  <template>
+	  <paper-header-panel>
+		<paper-toolbar>
+			<paper-icon-button icon="arrow-back" on-tap="goHome"></paper-icon-button>
+			<span class="title"> &nbsp; </span>
+			<social-el></social-el>
+		</paper-toolbar>
+
+	   <section id="page">
+
+        <div class="flex">
+
+        <paper-card class="rate">
+          <div class="rate-content">
+            <div class="card-content">
+              <div class="rate-header">Promelmedia</div>
+              <div class="rate-name">Web Developer</div>
+              <div>September 2014 – Present (1 year 9 months)</div>
+            </div>
+          </div>
+          <div class="rate-image rate-image1"></div>
+        </paper-card>
+
+        <paper-card class="rate">
+          <div class="rate-content">
+            <div class="card-content">
+              <div class="rate-header">Xhibit Corp</div>
+              <div class="rate-name">Web Developer</div>
+              <div>September 2013 – June 2014 (10 months)</div>
+            </div>
+          </div>
+          <div class="rate-image rate-image2"></div>
+        </paper-card>
+
+        <paper-card class="rate">
+          <div class="rate-content">
+            <div class="card-content">
+              <div class="rate-header">Infomedia</div>
+              <div class="rate-name">Web Developer</div>
+              <div>July 2011 – September 2013 (2 years 3 months)</div>
+            </div>
+          </div>
+          <div class="rate-image rate-image3"></div>
+        </paper-card>
+
+        <paper-card class="rate">
+          <div class="rate-content">
+            <div class="card-content">
+              <div class="rate-header">Infoars</div>
+              <div class="rate-name">PHP Instructor</div>
+              <div>2011 – 2011 (less than a year)</div>
+            </div>
+          </div>
+          <div class="rate-image rate-image4"></div>
+        </paper-card>
+
+        </div>
+
+
+        </section>
+	 </paper-header-panel>
+
+
+  </template>
+
+</dom-module>
+
+<script>
+
+    Polymer({
+      is: 'experience-page',
+		behaviors: [Polymer.NeonAnimatableBehavior],
+      properties: {
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                name: 'slide-from-top-animation',
+                node: this
+              },
+              'exit': {
+                name: 'slide-up-animation',
+                node: this
+              }
+            };
+          }
+        }
+      },
+		goHome: function(){
+			document.querySelector('neon-animated-pages').selected='home';
+		}
+    });
+
+</script>

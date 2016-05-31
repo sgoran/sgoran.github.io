@@ -1,0 +1,134 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-top-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-up-animation.html">
+
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+
+<link rel="import" href="social-el.html">
+
+
+<dom-module id="contact-page">
+  
+	<style is="custom-style">
+      paper-input.myinput{
+        --paper-input-container-input-color: white !important;
+        --primary-text-color: white !important;
+      }
+        .page{
+            height: 100vh;
+            background: black;
+            font-family: 'Roboto', 'Noto', sans-serif;
+            padding: 0;
+            color: white;
+            @apply(--layout-center-center);
+            @apply(--layout-horizontal);
+            @apply(--layout-wrap);
+        }
+
+        img{
+            width: 170px;
+            height: 170px;
+            padding: 20px;
+        }
+
+        form{
+          width: 30%;
+        }
+
+        @media screen and (max-width: 900px) {
+            form{
+              width: 80%;
+            }
+        }
+        paper-toolbar{
+          background: black;
+          color: gray;
+        }
+
+        [name="name"]{
+            margin-bottom: 40px;
+        }
+        [name="email"]{
+            margin-bottom: 40px;
+        }
+
+        paper-button{
+            margin-top: 20px;
+        }
+		  .paper-input{
+				color: white;
+		  }
+   </style>
+
+  <template>
+	  <paper-header-panel>
+		<paper-toolbar>
+			<paper-icon-button icon="arrow-back" on-tap="goHome"></paper-icon-button>
+			<span class="title"> &nbsp; </span>
+			<social-el></social-el>
+		</paper-toolbar>
+			<section class="page">
+
+            <form id="form" is="iron-form" method="post" action="http://lessgeneric.com/x/m.php" >
+                  <paper-input name="name" label="Name" required auto-validate class="myinput"></paper-input>
+                  <paper-input name="email" label="Email" type="email" required auto-validate></paper-input>
+                  <paper-textarea rows="10" name="details" label="Details"></paper-textarea>
+                  <paper-button raised on-tap="_submitForm">Send</paper-button>
+            </form>
+            <script>
+            </script>
+
+
+
+      	</section>
+	 </paper-header-panel>
+
+
+  </template>
+
+</dom-module>
+
+<script>
+
+    Polymer({
+      is: 'contact-page',
+		behaviors: [Polymer.NeonAnimatableBehavior],
+        properties: {
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                name: 'slide-from-top-animation',
+                node: this
+              },
+              'exit': {
+                name: 'slide-up-animation',
+                node: this
+              }
+            };
+          }
+        }
+      },
+		goHome: function(){
+			document.querySelector('neon-animated-pages').selected='home';
+		},
+        _submitForm: function() {
+          document.getElementById('form').submit();
+        }
+    });
+
+</script>

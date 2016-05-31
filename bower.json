@@ -3,7 +3,7 @@
   "authors": [
     "Goran Smiljanic <sgoran87@gmail.com>"
   ],
-  "description": "Portfolio",
+  "description": "Portfolio in polymer",
   "main": "index.html",
   "moduleType": [
     "es6"
@@ -21,7 +21,8 @@
     "paper-elements": "PolymerElements/paper-elements#^1.0.1",
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "polymer": "Polymer/polymer#^1.2.0",
-    "iron-list": "PolymerElements/iron-list#^1.2.8"
+    "iron-list": "PolymerElements/iron-list#^1.2.8",
+    "app-route": "PolymerElements/app-route#^0.9.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

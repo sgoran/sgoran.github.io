@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+
+<dom-module id="list-el" attributes="title items" noscript>
+	<style>
+		h3, h4{
+    color: white;
+    
+        padding: 0px 16px;
+}
+
+.list-wrapper{
+
+}
+
+.lists{
+     @apply(--layout-horizontal);
+}
+paper-listbox{
+    background: transparent;
+    color: white;
+}
+img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+	</style>
+	<template>
+		<div>
+            <div class="list-wrapper">
+
+            <h4>{{title}}</h4>
+            <paper-listbox selectable="false">
+                <template is="dom-repeat" items="{{items}}">
+                  <paper-item> <img alt="{{item.text}}" src="images/skills/{{item.img}}" /> {{item.text}}</paper-item>
+                </template>
+            </paper-listbox>
+            </div>
+        </div>
+	</template>
+	<script>
+		Polymer({
+			is: 'list-el' 
+		})
+	</script>
+</dom-module>

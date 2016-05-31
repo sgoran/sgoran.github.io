@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+
+<dom-module id="social-el" noscript>
+	<style>
+
+        .list-wrapper{
+            @apply(--layout-horizontal);
+        }
+
+        img{
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+        }
+	</style>
+	<template>
+		<div>
+            <div class="list-wrapper">
+                <a href="https://github.com/sgoran" target="_BLANK"><img alt="GitHub" src="../images/contact/git.png" /></a>
+                <a href="https://www.linkedin.com/in/goransmiljanic" target="_BLANK"><img alt="LinkedIn" src="../images/contact/ln.png" /></a>
+                <a href="mailto:sgoran87@gmail.com?Subject=Hello%20goran" target="_top"><img alt="E-Mail" src="../images/contact/mail.png" /></a>
+            </div>
+        </div>
+	</template>
+	<script>
+		Polymer({
+			is: 'social-el' 
+		})
+	</script>
+</dom-module>

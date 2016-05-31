@@ -1,0 +1,175 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-top-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-up-animation.html">
+
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+
+<link rel="import" href="social-el.html">
+
+<dom-module id="about-page">
+
+    <link rel="import" type="css" href="common.css">
+
+	<style is="custom-style">
+	.page{
+  		height: 100%;
+  		background: url(../images/bck/about.jpeg) center/cover no-repeat;
+	}
+
+    h3{
+        color: #fff;
+        font-weight: normal;
+        line-height: 2.5rem;
+        text-align: left;
+    }
+    h3.title{
+        color: gray;
+    }
+
+
+
+    .flex{
+        padding: 5rem;
+        @apply(--layout-justified);
+    }
+  	.overlay{
+  		width: 100%;
+  		height: 100%;
+  		background: rgba(12, 69, 76, 0.8);
+  		@apply(--layout-horizontal);
+  	}
+
+	@media screen and (max-width: 900px) {
+        .flex{
+            padding: 1px;
+        }
+        div.content{
+            text-align: justify;
+            margin-left: 1px;
+        }
+         h1{
+            text-align: justify;
+        }
+    }
+
+    paper-header-panel{
+        background-color: #15424b;
+    }
+    a{
+         color: gray;
+     }
+	</style>
+
+	<template>
+
+		<paper-header-panel>
+		<paper-toolbar>
+			<paper-icon-button icon="arrow-back" on-tap="goHome"></paper-icon-button>
+			<span class="title"> &nbsp; </span>
+         <social-el></social-el>
+		</paper-toolbar>
+			<section class="page">
+
+           <div class="overlay">
+
+               <div class="flex">
+                        <div class="content0">
+								<h3 class="title">ABOUT ME</h3>
+    						<h3>
+                                My name is Goran Smiljanic, I am a web developer, a bit sportish and like
+                                to enjoy and feel great while I work. 
+                                It seems that professional basketball players such as NBA guys are having a great fun while doing their job, why shouldn't we?
+                            </h3>
+                            <h3>
+                                Don't like to call
+                                myself full stack, senior, yoda etc. But I have over 5 years of experience with backend and frontend. Familiar with DevOps and Agile too.
+                                I live in Banja Luka - Bosnia with my wife and our daughter. Worked for clients around the globe.
+                            </h3>
+                            
+                        </div>
+                        
+						<div class="content">
+                        <h3 class="title">MY WAY</h3>
+                        <div>
+                            <div>I am open minded and self motivated. Don't like to sit in company office for 8 hours just because It's a must. 
+                           I am very responsible with my work and like when people trust me.
+                            
+
+                           <p>
+                           I started as a backend developer and working with JS currently. I like to explore ES6, HTML5 api, new frameworks and technology. 
+                           This website is done in google polymer because I wanted to see how it works.. (works pretty well :) )
+                           </p>
+
+                           <p>
+                               My philosophy is to do something and master it, to be specialized rather than to do many things and to be average.
+                               If I have the knowledge I can think more about the problem itself,
+                               rather than how to use the tool.
+                           </p>
+                            <p>I love to know how things work.
+                              So seeing me reading posts like:
+                              <a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_BLANK">how browser work behind the scenes </a>
+                              or
+                              <a href="http://ejohn.org/blog/how-javascript-timers-work/" target="_BLANK">how javascript timers work </a> , etc is a daily appearance.
+                         </p>
+
+                         <p>
+                              I find that writing quality code is what defines programmer in the first place.
+                              To be experienced and to know many programming languages is cool,
+                              but understanding what
+                              <a href="https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules">this</a>
+                              means and trying to think in that way is what makes me excited about programming.
+
+                         </p>
+
+                            </div>
+                        </div>
+                        </div>
+
+                </div>
+			</div>
+
+      	</section>
+	 </paper-header-panel>
+
+
+
+	</template>
+
+</dom-module>
+
+<script>
+
+    Polymer({
+      is: 'about-page',
+		behaviors: [Polymer.NeonAnimatableBehavior],
+      properties: {
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                name: 'slide-from-top-animation',
+                node: this
+              },
+              'exit': {
+                name: 'slide-up-animation',
+                node: this
+              }
+            };
+          }
+        }
+      },
+		goHome: function(){
+			document.querySelector('neon-animated-pages').selected='home';
+		}
+    });
+
+</script>
