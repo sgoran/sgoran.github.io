@@ -16,10 +16,39 @@
 
 <dom-module id="work-page">
 
-	<link rel="import" type="css" href="common.css">
+
 
 	<style is="custom-style">
+		
 
+.flex{
+  @apply(--layout-horizontal);
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+    .flex{@apply(--layout-vertical);}
+}
+
+paper-toolbar{
+  background: #05070A;
+  color: #e2e2e2;
+   @apply(--layout-justified);
+}
+
+div.content{
+    color: #c1cacb;
+    text-align: left;
+    line-height: 1.5rem;
+    margin-left: 60px;
+}
+
+    .title{
+        color: black;
+    }
+
+		
 		#page{
 			min-height: 100vh;
 			background-color: #f8f8f8;
